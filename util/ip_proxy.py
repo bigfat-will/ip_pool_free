@@ -19,7 +19,7 @@ class IpProxy(object):
         """
         self.host = host
         self.port = port
-        self.protocol = protocol
+        self.protocol = [p.upper() for p in protocol]
         self.region = region
         self.anonymous = anonymous
         self.source = source

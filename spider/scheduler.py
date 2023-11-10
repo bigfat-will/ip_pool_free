@@ -34,15 +34,15 @@ def spider_thread_executor():
 def _scheduler():
     scheduler = BlockingScheduler()
 
-    # 指定任务的运行时间，这里是当前时间之后的5秒
+    # 指定任务的运行时间，这里是当前时间之后的1秒
     run_time = datetime.datetime.now() + datetime.timedelta(seconds=1)
     scheduler.add_job(run_check_thread_executor, 'date', run_date=run_time, id="ip_check_thread_executor",
                       name="check")
 
-    scheduler.add_job(copy_check_thread_executor, 'interval', minutes=10, id="ip_check_copy_thread_executor",
+    scheduler.add_job(copy_check_thread_executor, 'interval', minutes=2, id="ip_check_copy_thread_executor",
                       name="check_copy")
 
-    scheduler.add_job(spider_thread_executor, 'interval', minutes=5, id="spider_thread_executor",
+    scheduler.add_job(spider_thread_executor, 'interval', minutes=1, id="spider_thread_executor",
                       name="spider")
 
     executors = {
